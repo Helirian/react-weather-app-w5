@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 import "./Weather.css";
 
@@ -49,38 +49,7 @@ export default function Search() {
     return (
       <div className="Weather">
         {form}
-        <h2>{weather.city}</h2>
-        <ul>
-          <li>
-            <FormattedDate date={weather.date} />
-          </li>
-          <li className="text-capitalize">
-            Description: {weather.description}
-          </li>
-        </ul>
-        <div className="row">
-          <div className="col-6">
-            <img src={weather.icon} alt={weather.description} />
-            <span className="temperature">{weather.temperature}</span>
-            <span className="unit"> C</span>
-          </div>
-          <div className="col-6">
-            <ul>
-              <li>Pressure: {weather.pressure}</li>
-              <li>Humidity: {weather.humidity}%</li>
-              <li>Wind: {weather.wind} km/h</li>
-            </ul>
-          </div>
-        </div>
-        <ul>
-          <li>Temperature: {weather.temperature} C</li>
-          <li>Description: {weather.description}</li>
-          <li>Humidity: {weather.humidity}%</li>
-          <li>Wind: {weather.wind} km/h</li>
-          <li>
-            <img src={weather.icon} alt={weather.description} />
-          </li>
-        </ul>
+        <WeatherInfo data={weather} />
       </div>
     );
   } else {
