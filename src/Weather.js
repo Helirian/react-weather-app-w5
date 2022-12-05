@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Weather.css";
 
 export default function Search() {
   let [city, setCity] = useState("");
@@ -9,10 +10,13 @@ export default function Search() {
   function showWeather(response) {
     setLoaded(true);
     setWeather({
+      city: response.data.name,
+      // date: new Date(response.data.dt * 1000),
       temperature: Math.round(response.data.main.temp),
       wind: response.data.wind.speed,
       humidity: response.data.main.humidity,
       description: response.data.weather[0].description,
+      pressure: response.data.main.pressure,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
   }
@@ -29,18 +33,39 @@ export default function Search() {
   }
 
   let form = (
-    <form onSubmit={handleSubmit}>
-      <input type="search" onChange={updateCity} />
+    <form onSubmit={handleSubmit} className="d-flex">
+      <input type="search" onChange={updateCity} className="form-control" />
       <a href="/" onClick={handleSubmit}>
-        <button type="submit">Search</button>
+        <button type="submit" className="btn btn-outline-success">
+          Search
+        </button>
       </a>
     </form>
   );
 
   if (loaded) {
     return (
-      <div>
+      <div className="Weather">
         {form}
+        <h2>{weather.city}</h2>
+        <ul>
+          <li>Date: {weather.date}</li>
+          <li>Description: {weather.description}</li>
+        </ul>
+        <div className="row">
+          <div className="col-6">
+            <img src={weather.icon} alt={weather.description} />
+            <span className="temperature">{weather.temperature}</span>
+            <span className="unit"> C</span>
+          </div>
+          <div className="col-6">
+            <ul>
+              <li>Pressure: {weather.pressure}</li>
+              <li>Humidity: {weather.humidity}%</li>
+              <li>Wind: {weather.wind} km/h</li>
+            </ul>
+          </div>
+        </div>
         <ul>
           <li>Temperature: {weather.temperature} C</li>
           <li>Description: {weather.description}</li>
