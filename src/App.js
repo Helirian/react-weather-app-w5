@@ -8,7 +8,7 @@ function App() {
         <h1>Weather App</h1>
         <Weather />
         <footer>
-          This project was created by{" "}
+          This project is created by{" "}
           <a
             href="https://github.com/Helirian"
             target="_blank"
@@ -22,7 +22,15 @@ function App() {
             target="_blank"
             rel="noreferrer"
           >
-            open-sorced on GitHub
+            open-sourced on GitHub
+          </a>{" "}
+          and{" "}
+          <a
+            href="https://dainty-dieffenbachia-506159.netlify.app"
+            target="_blank"
+            rel="noreferrer"
+          >
+            hosted on Netlify
           </a>
         </footer>
       </div>

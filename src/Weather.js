@@ -38,7 +38,13 @@ export default function Search() {
 
   let form = (
     <form onSubmit={handleSubmit} className="d-flex">
-      <input type="search" onChange={updateCity} className="form-control" />
+      <input
+        type="search"
+        onChange={updateCity}
+        className="form-control"
+        placeholder="Enter a city"
+        aria-label="Search"
+      />
       <a href="/" onClick={handleSubmit}>
         <button type="submit" className="btn btn-outline-success">
           Search
