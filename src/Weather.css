@@ -45,3 +45,8 @@
   line-height: 1;
   top: -10px;
 }
+
+.Weather .add-info {
+  position: relative;
+  top: 15px;
+}
